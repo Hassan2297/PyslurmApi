@@ -1,0 +1,170 @@
+def get_jobs_in_queue():
+
+description: get all queued jobs for a specific user
+
+controller queue now contains only one job wiht id = 30
+=======================================================================
+
+code:
+
+@APPLICATION.route("/v1/jobs/queued")
+@AUTHENTICATION.login_required
+def get_jobs_in_queue():
+    """Get All Queued jobs for specific user"""
+    job_dict = {}
+    job_scheduler = pyslurm.job()
+    user_id = g.current_user
+    job_dict = job_scheduler.find_user(user_id)
+    return jsonify(job_dict)
+
+
+==============================================================================
+
+output:
+
+{
+  "30": {
+    "account": null, 
+    "admin_comment": null, 
+    "alloc_node": "juju-0f6a05-2", 
+    "alloc_sid": 11515, 
+    "altered": null, 
+    "array_job_id": null, 
+    "array_max_tasks": null, 
+    "array_task_id": null, 
+    "array_task_str": null, 
+    "assoc_id": 0, 
+    "batch_flag": 1, 
+    "batch_host": "juju-0f6a05-3", 
+    "billable_tres": 16.0, 
+    "bitflags": 0, 
+    "block_id": null, 
+    "blrts_image": null, 
+    "boards_per_node": 0, 
+    "burst_buffer": null, 
+    "burst_buffer_state": null, 
+    "cnode_cnt": null, 
+    "command": "/home/ubuntu/script1.sbatch", 
+    "comment": null, 
+    "conn_type": "n/a", 
+    "contiguous": false, 
+    "core_spec": null, 
+    "cores_per_socket": null, 
+    "cpu_freq_gov": null, 
+    "cpu_freq_max": null, 
+    "cpu_freq_min": null, 
+    "cpus_alloc_layout": {
+      "juju-0f6a05-3": [
+        0, 
+        1, 
+        2, 
+        3
+      ], 
+      "juju-0f6a05-4": [
+        0, 
+        1, 
+        2, 
+        3
+      ], 
+      "juju-0f6a05-5": [
+        0, 
+        1, 
+        2, 
+        3
+      ], 
+      "juju-0f6a05-6": [
+        0, 
+        1, 
+        2, 
+        3
+      ]
+    }, 
+    "cpus_allocated": {
+      "juju-0f6a05-3": 4, 
+      "juju-0f6a05-4": 4, 
+      "juju-0f6a05-5": 4, 
+      "juju-0f6a05-6": 4
+    }, 
+    "cpus_per_task": 1, 
+    "dependency": null, 
+    "derived_ec": "0:0", 
+    "eligible_time": 1584890245, 
+    "end_time": 1616426246, 
+    "exc_nodes": [], 
+    "exit_code": "0:0", 
+    "features": [], 
+    "gres": [], 
+    "group_id": 1000, 
+    "ionodes": null, 
+    "job_id": 30, 
+    "job_state": "RUNNING", 
+    "last_sched_eval": "2020-03-22T15:17:26", 
+    "licenses": {}, 
+    "linux_image": null, 
+    "max_cpus": 0, 
+    "max_nodes": 0, 
+    "mem_per_cpu": false, 
+    "mem_per_node": true, 
+    "min_memory_cpu": null, 
+    "min_memory_node": 0, 
+    "mloader_image": null, 
+    "name": "script1.sbatch", 
+    "network": null, 
+    "nice": 0, 
+    "nodes": "juju-0f6a05-[3-6]", 
+    "ntasks_per_board": 0, 
+    "ntasks_per_core": null, 
+    "ntasks_per_core_str": "UNLIMITED", 
+    "ntasks_per_node": 0, 
+    "ntasks_per_socket": null, 
+    "ntasks_per_socket_str": "UNLIMITED", 
+    "num_cpus": 16, 
+    "num_nodes": 4, 
+    "partition": "partition1", 
+    "pn_min_cpus": 1, 
+    "pn_min_memory": 0, 
+    "pn_min_tmp_disk": 0, 
+    "power_flags": 0, 
+    "preempt_time": null, 
+    "priority": 4294901758, 
+    "profile": 0, 
+    "qos": "normal", 
+    "ramdisk_image": null, 
+    "reboot": 0, 
+    "req_nodes": [], 
+    "req_switch": 0, 
+    "requeue": true, 
+    "resize_time": 0, 
+    "restart_cnt": 0, 
+    "resv_id": null, 
+    "resv_name": null, 
+    "rotate": false, 
+    "run_time": 323, 
+    "run_time_str": "00:05:23", 
+    "sched_nodes": null, 
+    "shared": "0", 
+    "show_flags": 22, 
+    "sockets_per_board": 0, 
+    "sockets_per_node": null, 
+    "start_time": 1584890246, 
+    "state_reason": "None", 
+    "std_err": "/home/ubuntu/slurm-30.out", 
+    "std_in": "/dev/null", 
+    "std_out": "/home/ubuntu/slurm-30.out", 
+    "submit_time": 1584890245, 
+    "suspend_time": 0, 
+    "threads_per_core": null, 
+    "time_limit": "UNLIMITED", 
+    "time_limit_str": "UNLIMITED", 
+    "time_min": 0, 
+    "tres_alloc_str": "cpu=16,node=4,billing=16", 
+    "tres_req_str": "cpu=4,node=4", 
+    "user_id": 1000, 
+    "wait4switch": 0, 
+    "wckey": null, 
+    "work_dir": "/home/ubuntu"
+  }
+}
+
+
+

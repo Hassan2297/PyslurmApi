@@ -1,0 +1,28 @@
+def get_jobs():
+
+description: get all jobs for a specfic user and can filter by status
+==============================================================================
+
+code:
+
+
+@APPLICATION.route("/v1/jobs")
+@AUTHENTICATION.login_required
+def get_jobs():
+    """Get All jobs for specific user and can filter by status"""
+    job_dict = {}
+    current_date = datetime.today() + timedelta(days=1)
+    start = "2019-07-01"
+    end = current_date.strftime('%Y-%m-%d')
+    job_scheduler = pyslurm.slurmdb_jobs()
+    job_dict = job_scheduler.get(starttime=bytes(start, "utf-8"), endtime=bytes(end, "utf-8"))
+    user_name = pwd.getpwuid(g.current_user).pw_name
+    job_dict = dict(filter(lambda job: job[1]['user'] == user_name, job_dict.items()))
+    return jsonify(job_dict)
+
+
+===================================================================================
+
+output:
+
+same output as jobs in queue but need to be tested first

@@ -1,0 +1,231 @@
+get_all_nodes():
+
+description: get all nodes in the controller
+
+controller contains 4 nodes now [3-6]
+=========================================================================
+
+code:
+
+@APPLICATION.route("/v1/nodes", methods=['GET'])
+def get_all_nodes():
+    """Get all nodes"""
+    node_instance = pyslurm.node()
+    node_dict = node_instance.get()
+    return jsonify(node_dict)
+
+============================================================================
+
+output:
+
+{
+  "juju-0f6a05-3": {
+    "alloc_cpus": 0, 
+    "alloc_mem": 0, 
+    "arch": "x86_64", 
+    "boards": 1, 
+    "boot_time": 1584522559, 
+    "core_spec_cnt": 0, 
+    "cores": 1, 
+    "cores_per_socket": 1, 
+    "cpu_load": 801, 
+    "cpu_spec_list": [], 
+    "cpus": 4, 
+    "energy": {
+      "base_consumed_energy": 0, 
+      "base_watts": 0, 
+      "consumed_energy": 0, 
+      "current_watts": 0, 
+      "previous_consumed_energy": 0
+    }, 
+    "err_cpus": 0, 
+    "features": [], 
+    "features_active": [], 
+    "free_mem": 227, 
+    "gres": [], 
+    "gres_drain": "N/A", 
+    "gres_used": null, 
+    "mcs_label": null, 
+    "mem_spec_limit": 0, 
+    "name": "juju-0f6a05-3", 
+    "node_addr": "10.101.17.223", 
+    "node_hostname": "juju-0f6a05-3", 
+    "os": "Linux 4.15.0-91-generic #92-Ubuntu SMP Fri Feb 28 11:09:48 UTC 2020", 
+    "owner": null, 
+    "partitions": [
+      "partition1"
+    ], 
+    "power_mgmt": {
+      "cap_watts": null
+    }, 
+    "real_memory": 7976, 
+    "reason": null, 
+    "reason_time": null, 
+    "reason_uid": null, 
+    "slurmd_start_time": 1584522589, 
+    "sockets": 4, 
+    "state": "IDLE", 
+    "threads": 1, 
+    "tmp_disk": 0, 
+    "tres_fmt_str": "cpu=4,mem=7976M,billing=4", 
+    "version": "17.11", 
+    "weight": 1
+  }, 
+  "juju-0f6a05-4": {
+    "alloc_cpus": 0, 
+    "alloc_mem": 0, 
+    "arch": "x86_64", 
+    "boards": 1, 
+    "boot_time": 1584522559, 
+    "core_spec_cnt": 0, 
+    "cores": 1, 
+    "cores_per_socket": 1, 
+    "cpu_load": 801, 
+    "cpu_spec_list": [], 
+    "cpus": 4, 
+    "energy": {
+      "base_consumed_energy": 0, 
+      "base_watts": 0, 
+      "consumed_energy": 0, 
+      "current_watts": 0, 
+      "previous_consumed_energy": 0
+    }, 
+    "err_cpus": 0, 
+    "features": [], 
+    "features_active": [], 
+    "free_mem": 227, 
+    "gres": [], 
+    "gres_drain": "N/A", 
+    "gres_used": null, 
+    "mcs_label": null, 
+    "mem_spec_limit": 0, 
+    "name": "juju-0f6a05-4", 
+    "node_addr": "10.101.17.137", 
+    "node_hostname": "juju-0f6a05-4", 
+    "os": "Linux 4.15.0-91-generic #92-Ubuntu SMP Fri Feb 28 11:09:48 UTC 2020", 
+    "owner": null, 
+    "partitions": [
+      "partition1"
+    ], 
+    "power_mgmt": {
+      "cap_watts": null
+    }, 
+    "real_memory": 7976, 
+    "reason": null, 
+    "reason_time": null, 
+    "reason_uid": null, 
+    "slurmd_start_time": 1584522589, 
+    "sockets": 4, 
+    "state": "IDLE", 
+    "threads": 1, 
+    "tmp_disk": 0, 
+    "tres_fmt_str": "cpu=4,mem=7976M,billing=4", 
+    "version": "17.11", 
+    "weight": 1
+  }, 
+  "juju-0f6a05-5": {
+    "alloc_cpus": 0, 
+    "alloc_mem": 0, 
+    "arch": "x86_64", 
+    "boards": 1, 
+    "boot_time": 1584522559, 
+    "core_spec_cnt": 0, 
+    "cores": 1, 
+    "cores_per_socket": 1, 
+    "cpu_load": 801, 
+    "cpu_spec_list": [], 
+    "cpus": 4, 
+    "energy": {
+      "base_consumed_energy": 0, 
+      "base_watts": 0, 
+      "consumed_energy": 0, 
+      "current_watts": 0, 
+      "previous_consumed_energy": 0
+    }, 
+    "err_cpus": 0, 
+    "features": [], 
+    "features_active": [], 
+    "free_mem": 227, 
+    "gres": [], 
+    "gres_drain": "N/A", 
+    "gres_used": null, 
+    "mcs_label": null, 
+    "mem_spec_limit": 0, 
+    "name": "juju-0f6a05-5", 
+    "node_addr": "10.101.17.76", 
+    "node_hostname": "juju-0f6a05-5", 
+    "os": "Linux 4.15.0-91-generic #92-Ubuntu SMP Fri Feb 28 11:09:48 UTC 2020", 
+    "owner": null, 
+    "partitions": [
+      "partition1"
+    ], 
+    "power_mgmt": {
+      "cap_watts": null
+    }, 
+    "real_memory": 7976, 
+    "reason": null, 
+    "reason_time": null, 
+    "reason_uid": null, 
+    "slurmd_start_time": 1584522592, 
+    "sockets": 4, 
+    "state": "IDLE", 
+    "threads": 1, 
+    "tmp_disk": 0, 
+    "tres_fmt_str": "cpu=4,mem=7976M,billing=4", 
+    "version": "17.11", 
+    "weight": 1
+  }, 
+  "juju-0f6a05-6": {
+    "alloc_cpus": 0, 
+    "alloc_mem": 0, 
+    "arch": "x86_64", 
+    "boards": 1, 
+    "boot_time": 1584522559, 
+    "core_spec_cnt": 0, 
+    "cores": 1, 
+    "cores_per_socket": 1, 
+    "cpu_load": 801, 
+    "cpu_spec_list": [], 
+    "cpus": 4, 
+    "energy": {
+      "base_consumed_energy": 0, 
+      "base_watts": 0, 
+      "consumed_energy": 0, 
+      "current_watts": 0, 
+      "previous_consumed_energy": 0
+    }, 
+    "err_cpus": 0, 
+    "features": [], 
+    "features_active": [], 
+    "free_mem": 227, 
+    "gres": [], 
+    "gres_drain": "N/A", 
+    "gres_used": null, 
+    "mcs_label": null, 
+    "mem_spec_limit": 0, 
+    "name": "juju-0f6a05-6", 
+    "node_addr": "10.101.17.35", 
+    "node_hostname": "juju-0f6a05-6", 
+    "os": "Linux 4.15.0-91-generic #92-Ubuntu SMP Fri Feb 28 11:09:48 UTC 2020", 
+    "owner": null, 
+    "partitions": [
+      "partition1"
+    ], 
+    "power_mgmt": {
+      "cap_watts": null
+    }, 
+    "real_memory": 7976, 
+    "reason": null, 
+    "reason_time": null, 
+    "reason_uid": null, 
+    "slurmd_start_time": 1584876893, 
+    "sockets": 4, 
+    "state": "IDLE", 
+    "threads": 1, 
+    "tmp_disk": 0, 
+    "tres_fmt_str": "cpu=4,mem=7976M,billing=4", 
+    "version": "17.11", 
+    "weight": 1
+  }
+}
+
